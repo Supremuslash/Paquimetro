@@ -13,16 +13,19 @@ class Parquimetro {
     }
 
     // Retorna { minutos, precoUsado, troco } ou null se inválido
+
     calcularTempoETroco(valor) {
         if (!this.validarValor(valor)) return null;
 
         // encontra o maior preço da tabela que seja <= valor informado
+
         const opcoesValidas = this.tabela.filter(o => o.preco <= valor);
         if (opcoesValidas.length === 0) return null;
 
         const escolha = opcoesValidas[opcoesValidas.length - 1];
 
         // limita o tempo máximo a 120 minutos
+
         const minutos = Math.min(escolha.minutos, 120);
         const precoUsado = escolha.preco;
         const troco = parseFloat((valor - precoUsado).toFixed(2));
@@ -31,6 +34,7 @@ class Parquimetro {
     }
 
     // formata minutos em "1h 30min" ou "30min"
+
     formatarTempo(minutos){
         const h = Math.floor(minutos / 60);
         const m = minutos % 60;
